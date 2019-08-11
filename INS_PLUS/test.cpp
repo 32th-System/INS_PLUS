@@ -375,40 +375,40 @@ void dm_shooter_init()
 	VirtualProtect(dm_shooter, sizeof(dm_shooter), PAGE_EXECUTE_READWRITE, &oldP);
 }
 
-void test_init()
+void test_init(DWORD* addr)
 {
 	{
-		DWORD addr = 0x00526010;
-		*(DWORD*)(0x00455A89) = addr;//修改加载位置
-		*(DWORD*)(addr + 0x0) = 0x00000000;//0
-		*(DWORD*)(addr + 0x4) = 0x004599C0;//1
-		*(DWORD*)(addr + 0x8) = 0x00459DB0;//2
-		*(DWORD*)(addr + 0xC) = 0x0045AA10;//3
-		*(DWORD*)(addr + 0x10) = 0x0045AEF0;//4
-		*(DWORD*)(addr + 0x14) = 0x0045B010;//5		
+		
+		*(DWORD*)0x00455A89 = (DWORD)addr;//修改加载位置
+		*(addr + 0x0) = 0x00000000;//0
+		*(addr + 0x4) = 0x004599C0;//1
+		*(addr + 0x8) = 0x00459DB0;//2
+		*(addr + 0xC) = 0x0045AA10;//3
+		*(addr + 0x10) = 0x0045AEF0;//4
+		*(addr + 0x14) = 0x0045B010;//5		
 		//*(DWORD*)(addr + 0x18) = (DWORD)playerDm_flag1;//6	
 	}//伪造虚表,flag1
 	{
-		DWORD addr = 0x00526030;
-		*(DWORD*)(0x00455A96) = addr;//修改加载位置
-		*(DWORD*)(addr + 0x0) = 0x00000000;//0
-		*(DWORD*)(addr + 0x4) = 0x004599D0;//1
-		*(DWORD*)(addr + 0x8) = 0x00459E10;//2
-		*(DWORD*)(addr + 0xC) = 0x0045A780;//3
-		*(DWORD*)(addr + 0x10) = 0x0045AA20;//4
+		addr += 0x20;
+		*(DWORD*)0x00455A96 = (DWORD)addr;//修改加载位置
+		*(addr + 0x0) = 0x00000000;//0
+		*(addr + 0x4) = 0x004599D0;//1
+		*(addr + 0x8) = 0x00459E10;//2
+		*(addr + 0xC) = 0x0045A780;//3
+		*(addr + 0x10) = 0x0045AA20;//4
 		//*(DWORD*)(addr + 0x14) = (DWORD)playerDm_flag2;//5	
 		//*(DWORD*)(addr + 0x8) = (DWORD)playerDm_flag2;//2 使用
 	}//伪造虚表,flag2
 	{
-		DWORD addr = 0x00526050;
-		*(DWORD*)(0x00455AB0) = addr;//修改加载位置
-		*(DWORD*)(addr + 0x0) = 0x00000000;//0
-		*(DWORD*)(addr + 0x4) = 0x00459BD0;//1
-		*(DWORD*)(addr + 0x8) = 0x0045A180;//2
-		*(DWORD*)(addr + 0xC) = 0x0045A7A0;//3
-		*(DWORD*)(addr + 0x10) = 0x0045A8E0;//4
-		*(DWORD*)(addr + 0x14) = 0x0045ABB0;//5	
-		*(DWORD*)(addr + 0x18) = 0x0045AD10;//6
+		addr += 0x20;
+		*(DWORD*)0x00455AB0 = (DWORD)addr;//修改加载位置
+		*(addr + 0x0) = 0x00000000;//0
+		*(addr + 0x4) = 0x00459BD0;//1
+		*(addr + 0x8) = 0x0045A180;//2
+		*(addr + 0xC) = 0x0045A7A0;//3
+		*(addr + 0x10) = 0x0045A8E0;//4
+		*(addr + 0x14) = 0x0045ABB0;//5	
+		*(addr + 0x18) = 0x0045AD10;//6
 		//*(DWORD*)(addr + 0x1C) = (DWORD)playerDm_flag4;//7
 	}//伪造虚表,flag4
 	{

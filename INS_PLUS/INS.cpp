@@ -57,9 +57,13 @@ void INS_2333(DWORD* ptNowObj)
 
 void  init()
 {
-	*(DWORD*)(0x00526000) = (DWORD)INS_Switch;
-	*(DWORD*)(0x00526050) = (DWORD)shapes;
-	test_init();
+	DWORD* addr = (DWORD*)malloc(0x500);
+	
+	DWORD OldProtection;
+	VirtualProtect((LPVOID)0x401000, 0xBD000, PAGE_EXECUTE_READWRITE, &OldProtection);
+	*addr = (DWORD)INS_Switch;
+	*(addr + 0x50) = (DWORD)shapes;
+	test_init(addr);
 }
 
 int _stdcall INS_Switch(int code, int ptINS, DWORD ptObj,DWORD* _obj)

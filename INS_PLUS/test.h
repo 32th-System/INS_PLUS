@@ -13,5 +13,5 @@ void _fastcall dm_shooter_override(DWORD dm_num, DWORD ptr_this);
 void curve_laser_update_init();
 void static_laser_update_init();
 void normal_laser_update_init();
-void test_init();
+void test_init(DWORD* addr);
 void dm_shooter_init();
